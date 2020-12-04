@@ -33,5 +33,9 @@ class TestCalctor1:
     @pytest.mark.parametrize('a, b, c', num1, ids=myid1)
     @allure.story("除法功能")
     def test_div_1(self, a, b, c):
-        result = self.calc.div(a, b)
-        assert result == c
+        try:
+            result = self.calc.div(a, b)
+        except Exception:
+            print("抛出异常，除数不能为0")
+        finally:
+            assert result == c
