@@ -37,38 +37,43 @@ with open(yaml_file_path, encoding="utf-8") as f:
 
 @pytest.fixture()
 def get_cacl():
-    print("计算开始")
     cacl = Calctor()
-    yield cacl
-    print("计算结束")
+    return cacl
 
 
 @pytest.fixture(params=add_data, ids=add_myid)
 def get_add_data(request):
+    print("计算开始")
     data = request.param
     print(f"测试数据{data}")
-    return data
-
+    yield data
+    print("计算结束")
 
 @pytest.fixture(params=sub_data, ids=sub_myid)
 def get_sub_data(request):
+    print("计算开始")
     data = request.param
     print(f"测试数据{data}")
-    return data
+    yield data
+    print("计算结束")
 
 
 @pytest.fixture(params=mul_data, ids=mul_myid)
 def get_mul_data(request):
+    print("计算开始")
     data = request.param
     print(f"测试数据{data}")
-    return data
+    yield data
+    print("计算结束")
 
 
 @pytest.fixture(params=div_data, ids=div_myid)
 def get_div_data(request):
+    print("计算开始")
     data = request.param
     print(f"数据{data}")
-    return data
+    yield data
+    print("计算结束")
 
 # yaml_file_path = os.path.dirname(__file__) + "./datas/calc_1.yml"
 #
