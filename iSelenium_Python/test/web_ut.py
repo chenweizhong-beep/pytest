@@ -14,7 +14,7 @@ class ISelenium(unittest.TestCase):
     # 读入配置文件
     def get_config(self):
         config = configparser.ConfigParser()
-        config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
+        config.read(os.path.join(os.environ['HOMEPATH'], 'iselenium.ini'))
         return config
 
     def tearDown(self):
@@ -28,11 +28,11 @@ class ISelenium(unittest.TestCase):
             using_headless = os.environ["using_headless"]
         except KeyError:
             using_headless = None
-            print('没有配置环境变量 using_headless, 按照有界面方式运行自动化测试')
+            # print('没有配置环境变量 using_headless, 按照有界面方式运行自动化测试')
 
         chrome_options = Options()
         if using_headless is not None and using_headless.lower() == 'true':
-            print('使用无界面方式运行')
+            # print('使用无界面方式运行')
             chrome_options.add_argument("--headless")
 
         self.driver = webdriver.Chrome(executable_path=config.get('driver', 'chrome_driver'),
