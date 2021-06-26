@@ -7,22 +7,31 @@ from pytest_testconfig import config
 timeout = 30
 poll = 2
 
+
 # APP测试
 class IAppium(unittest.TestCase):
 
     def setUp(self):
         desired_caps = {}
-        appium_server_url = config['appium_server_url']
-        desired_caps['platformName'] = config['desired_caps']['platformName']
-        desired_caps['udid'] = config['desired_caps']['udid']
-        desired_caps['deviceName'] = config['desired_caps']['deviceName']
-        desired_caps['appPackage'] = config['desired_caps']['appPackage']
-        desired_caps['appActivity'] = config['desired_caps']['appActivity']
-        desired_caps['automationName'] = config['desired_caps']['automationName']
-        desired_caps['noReset'] = config['desired_caps']['noReset']
-        desired_caps['app'] = f'{os.path.abspath(os.curdir)}/app/ContactManager.apk'
-
-        self.driver = webdriver.Remote(appium_server_url, desired_caps)
+        # appium_server_url = config['appium_server_url']
+        # desired_caps['platformName'] = config['desired_caps']['platformName']
+        # desired_caps['udid'] = config['desired_caps']['udid']
+        # desired_caps['deviceName'] = config['desired_caps']['deviceName']
+        # desired_caps['appPackage'] = config['desired_caps']['appPackage']
+        # desired_caps['appActivity'] = config['desired_caps']['appActivity']
+        # desired_caps['automationName'] = config['desired_caps']['automationName']
+        # desired_caps['noReset'] = config['desired_caps']['noReset']
+        # desired_caps['app'] = f'{os.path.abspath(os.curdir)}/app/ContactManager.apk'
+        #
+        # self.driver = webdriver.Remote(appium_server_url, desired_caps)
+        desired_caps['platformName'] = 'Android'
+        desired_caps['deviceName'] = '127.0.0.1:7555'
+        desired_caps['udid'] =  '127.0.0.1:7555'
+        desired_caps['platformVersion'] = '6.0'
+        desired_caps['appPackage'] = 'com.example.android.contactmanager'
+        desired_caps['appActivity'] = '.ContactManager'
+        desired_caps['noReset'] = 'true'
+        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
     def tearDown(self):
         self.driver.quit()
