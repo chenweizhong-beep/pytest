@@ -29,3 +29,5 @@ class BasePage:
         element: WebDriver = WebDriverWait(self.driver, timeout).until \
             (expected_conditions.element_to_be_clickable(locator))
         return element
+
+
