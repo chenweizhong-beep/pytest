@@ -41,13 +41,15 @@ def get_cacl():
     return cacl
 
 
+
 @pytest.fixture(params=add_data, ids=add_myid)
 def get_add_data(request):
-    print("计算开始")
+    print("计算开始le")
     data = request.param
     print(f"测试数据{data}")
     yield data
     print("计算结束")
+
 
 @pytest.fixture(params=sub_data, ids=sub_myid)
 def get_sub_data(request):
